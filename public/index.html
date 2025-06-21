@@ -2,11 +2,13 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Text Adventure</title>
+  <title>Viridian Engine</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
+      overflow: hidden;
       font-family: "Segoe UI", Roboto, sans-serif;
       background: linear-gradient(120deg, #f2f4f7, #e3e6e9);
       color: #333;
@@ -25,6 +27,8 @@
       align-items: flex-start;
       padding: 20px;
       gap: 20px;
+      height: 100%;
+      overflow: hidden;
     }
     .glass {
       background: rgba(255, 255, 255, 0.4);
@@ -36,20 +40,27 @@
     #left-panel, #right-panel {
       flex: 1;
       max-width: 50%;
+      height: 100%;
+    }
+    #left-panel {
+      display: flex;
+      flex-direction: column;
     }
     #right-panel {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
+      justify-content: space-between;
     }
     #image {
       width: 100%;
-      height: auto;
+      flex: 1;
+      object-fit: contain;
       border-radius: 8px;
     }
     #map {
-      width: 200px;
+      width: 300px;
       height: 200px;
       border: 1px solid #999;
       background: #fff;
@@ -59,13 +70,31 @@
       white-space: pre-wrap;
       margin-top: 10px;
       font-size: 1.1em;
+      flex: 1;
+      overflow: auto;
     }
     #choices {
       margin: 10px 0;
       text-align: left;
     }
     #custom-upload { margin-top: 10px; }
-    #title-screen button { margin: 5px; }
+    #title-screen {
+      border: 2px solid #3f51b5;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    #title-screen button {
+      margin: 5px;
+      width: 200px;
+    }
+    #end-screen {
+      border: 2px solid #3f51b5;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    #end-screen button {
+      width: 200px;
+    }
     button {
       background: #3f51b5;
       color: #fff;
@@ -93,9 +122,13 @@
       justify-content: center;
       background: rgba(255, 255, 255, 0.8);
       font-size: 2em;
-      animation: pulse 1s infinite;
+      animation: pulse 2s infinite;
     }
-    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
     h1 {
       animation: fadein 1s ease-in;
       margin: 0;
@@ -116,7 +149,7 @@
 </head>
 <body>
   <div id="title-screen" class="screen">
-    <h1>Text Adventures</h1>
+    <h1>Viridian Engine</h1>
     <button data-game="zork">Zork</button>
     <button data-game="hitchhiker">Hitchhiker's Guide</button>
     <button data-game="starwars">Star Wars</button>
@@ -142,7 +175,7 @@
     </div>
     <div id="right-panel" class="glass">
       <img id="image" src="" alt="scene" />
-      <canvas id="map" width="200" height="200"></canvas>
+      <canvas id="map" width="300" height="200"></canvas>
     </div>
   </div>
 
