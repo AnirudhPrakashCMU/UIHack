@@ -1,0 +1,12 @@
+{
+  "title": "Example Adventure",
+  "rooms": [{
+    "id": "start",
+    "description": "You are standing in an open field.",
+    "choices": [{"text": "Go north", "target": "north_room"}]
+  }, {
+    "id": "north_room",
+    "description": "You have moved north.",
+    "choices": []
+  }]
+}

@@ -1,0 +1,7 @@
+{
+  "rooms": [
+    { "id": 0, "text": "You are on the desert planet Tatooine.", "choices": [{"text":"Continue","target":1}] },
+    { "id": 1, "text": "A droid approaches. It beeps loudly.", "choices": [{"text":"Continue","target":2}] },
+    { "id": 2, "text": "The adventure continues in a galaxy far, far away." }
+  ]
+}
