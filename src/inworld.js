@@ -5,7 +5,10 @@ const path = require('path');
 let voices = null;
 
 async function fetchVoices() {
-  if (!process.env.INWORLD_API_KEY) return [];
+  if (!process.env.INWORLD_API_KEY) {
+    voices = [];
+    return voices;
+  }
   try {
     const url = 'https://api.inworld.ai/tts/v1alpha/voices';
     const headers = { Authorization: 'Basic ' + process.env.INWORLD_API_KEY };
@@ -15,7 +18,8 @@ async function fetchVoices() {
     return voices;
   } catch (err) {
     console.error('[inworld] failed to fetch voices', err.response?.status || '', err.message);
-    return [];
+    voices = [];
+    return voices;
   }
 }
 
